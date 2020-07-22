@@ -1,3 +1,5 @@
+const { uuid } = require('uuidv4')
+
 module.exports = app => {
     /* ------------------------------------------------- */
     /* For searching for new numbers on Questblue */
@@ -57,7 +59,7 @@ module.exports = app => {
             "page": 1,
             "payload": [
                 {
-                    "messageSid": "b464a8f0-cbe0-11ea-b1b6-914df15d134c",
+                    "messageSid": uuid(),
                     "to": req.body.to,
                     "from": req.body.from,
                     "text": req.body.text,
