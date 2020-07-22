@@ -1,4 +1,5 @@
 const { uuid } = require('uuidv4')
+const numRegex = /^\d+$/
 
 module.exports = app => {
     /* ------------------------------------------------- */
@@ -51,7 +52,7 @@ module.exports = app => {
                     }
                 ]
             })
-        } else if (req.body.from.test(/^\d+$/).length < 10 || req.body.from.test(/^\d+$/).length > 11) {
+        } else if (req.body.from.replace(/\D+/g, "").length < 10 || req.body.from.replace(/\D+/g, "").length > 11) {
             res.status(200).send({
                 "status": false,
                 "count": 0,
@@ -64,7 +65,7 @@ module.exports = app => {
                     }
                 ]
             })
-        } else if (req.body.to.test(/^\d+$/).length < 10 || req.body.to.test(/^\d+$/).length > 11) {
+        } else if (req.body.to.replace(/\D+/g, "").length < 10 || req.body.to.replace(/\D+/g, "").length > 11) {
             res.status(200).send({
                 "status": false,
                 "count": 0,
