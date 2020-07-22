@@ -51,6 +51,32 @@ module.exports = app => {
                     }
                 ]
             })
+        } else if (req.body.from.test(/^\d+$/).length < 10 || req.body.from.test(/^\d+$/).length > 11) {
+            res.status(200).send({
+                "status": false,
+                "count": 0,
+                "page": 0,
+                "error": [
+                    {
+                        "code": "1142",
+                        "message": `Please enter a valid E.164 formated 'From' number. Or a valid number set. found:  ${req.body.from}`,
+                        "moreInfo": null
+                    }
+                ]
+            })
+        } else if (req.body.to.test(/^\d+$/).length < 10 || req.body.to.test(/^\d+$/).length > 11) {
+            res.status(200).send({
+                "status": false,
+                "count": 0,
+                "page": 0,
+                "error": [
+                    {
+                        "code": "1142",
+                        "message": `Please enter a valid E.164 formated 'To' number. Or a valid number set. found:  ${req.body.to}`,
+                        "moreInfo": null
+                    }
+                ]
+            })
         }
 
         res.status(200).send({
